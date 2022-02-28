@@ -1,1 +1,23 @@
+body {
+    margin: 0 auto;
+    max-width: 75%;
+    text-align: center;
+}
 
+header {
+    margin-top: 0;
+    display: flex;
+    justify-content: space-between;
+    background-color: lightblue;
+}
+
+header h1 {
+    align-items: center;
+    font-size: 5vw;
+    padding: 5px;
+}
+
+header p {
+    display: inline;
+    font-size: 1.5vw;
+}
