@@ -6,7 +6,10 @@ function countDown() {
     var timer = setInterval(function() {
         if(timeleft <= 0) {
             clearInterval(timer);
-            document.getElementById("timer").innerHTML = "0 seconds left."
+            document.getElementById("timer").innerHTML = "Time Ended."
+        }
+        else if(timeleft === 1) {
+            document.getElementById("timer").innerHTML = timeleft + " second left."
         }
         else {
             document.getElementById("timer").innerHTML = timeleft + " seconds left."
@@ -15,4 +18,3 @@ function countDown() {
     },1000)
 }
 
-countDown()
