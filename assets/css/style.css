@@ -22,6 +22,11 @@ header p {
     font-size: 1.5vw;
 }
 
+#greeting {
+    font-size: 2vw;
+    font-weight: bold;
+}
+
 .quiz-card {
     background-color: darkgrey;
     text-align: left;
