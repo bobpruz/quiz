@@ -1,15 +1,17 @@
  var greetingEl = $('#greeting')
  var startEl = $('#start')
  var answerGridEl = $('#answer-list')
+ var timeleft = 10
+ 
 
- var answerEl1 = $('<button id="answer1" class="btn btn-primary rounded mb-1 d-flex"></button>')
- var answerEl2 = $('<button id="answer2" class="btn btn-primary rounded mb-1 d-flex"></button>')
- var answerEl3 = $('<button id="answer3" class="btn btn-primary rounded mb-1 d-flex"></button>')
- var answerEl4 = $('<button id="answer4" class="btn btn-primary rounded mb-1 d-flex"></button>')
+ var answerEl1 = $('<button id="answer1" ans-value="y" class="btn btn-primary rounded mb-1 d-flex"></button>')
+ var answerEl2 = $('<button id="answer2" ans-value="n" class="btn btn-primary rounded mb-1 d-flex"></button>')
+ var answerEl3 = $('<button id="answer3" ans-value="n" class="btn btn-primary rounded mb-1 d-flex"></button>')
+ var answerEl4 = $('<button id="answer4" ans-value="n" class="btn btn-primary rounded mb-1 d-flex"></button>')
 
 //timer functions
 function countDown() {
-    var timeleft = 100
+    
     var timer = setInterval(function() {
         if(timeleft <= 0) {
             clearInterval(timer);
@@ -36,7 +38,7 @@ function greetingCard() {
 function answerGrid() {
     
     greetingEl.text("");
-    startEl.clearInterval();
+    startEl.remove();
 
     answerGridEl.append(answerEl1)
     answerGridEl.append(answerEl2)
@@ -51,15 +53,21 @@ function answerGrid() {
  
 }
 
+var ansCheck1 = function() {
+    if(timeleft > 0){
+        console.log("test");
+    }
+    else{
+        console.log("Game Over")
+    }
+}
+
 function gameprogress() {
-    countDown()
-    while(timeleft > 0) {
-        answerGrid()
-    }
-    else {
-        greetingEl.text("Game has ended")
-    }
+    countDown();
+    answerGrid();
+    
+    answerEl1.on("click", ansCheck1)
 
 }
 
-answerGrid()
+greetingCard()
