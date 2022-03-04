@@ -1,5 +1,12 @@
  var greetingEl = $('#greeting')
  var startEl = $('#start')
+ var answerGridEl = $('#answer-list')
+
+ var answerEl1 = $('<button id="answer1" class="btn btn-primary rounded mb-1 d-flex"></button>')
+ var answerEl2 = $('<button id="answer2" class="btn btn-primary rounded mb-1 d-flex"></button>')
+ var answerEl3 = $('<button id="answer3" class="btn btn-primary rounded mb-1 d-flex"></button>')
+ var answerEl4 = $('<button id="answer4" class="btn btn-primary rounded mb-1 d-flex"></button>')
+
 //timer functions
 function countDown() {
     var timeleft = 100
@@ -26,4 +33,20 @@ function greetingCard() {
 
 }
 
-greetingCard()
+function answerGrid() {
+    
+    
+    answerGridEl.append(answerEl1)
+    answerGridEl.append(answerEl2)
+    answerGridEl.append(answerEl3)
+    answerGridEl.append(answerEl4)
+
+    $('#answer1').append("This is answer 1");
+    $('#answer2').append("This is answer 2");
+    $('#answer3').append("This is answer 3");
+    $('#answer4').append("This is answer 4");
+ 
+ 
+}
+
+answerGrid()
