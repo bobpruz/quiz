@@ -29,13 +29,15 @@ function greetingCard() {
     greetingEl.text("Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds! Press the start button to begin.");
     startEl.append('<button class="btn btn-primary">Start Quiz</button>');
 
-    startEl.on("click", countDown)
+    startEl.on("click", gameprogress)
 
 }
 
 function answerGrid() {
     
-    
+    greetingEl.text("");
+    startEl.clearInterval();
+
     answerGridEl.append(answerEl1)
     answerGridEl.append(answerEl2)
     answerGridEl.append(answerEl3)
@@ -47,6 +49,17 @@ function answerGrid() {
     $('#answer4').append("This is answer 4");
  
  
+}
+
+function gameprogress() {
+    countDown()
+    while(timeleft > 0) {
+        answerGrid()
+    }
+    else {
+        greetingEl.text("Game has ended")
+    }
+
 }
 
 answerGrid()
