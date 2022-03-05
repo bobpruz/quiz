@@ -53,4 +53,8 @@ header p {
     margin: 3px;
 }
 
+#input-group form {
+    font-size: 2vw;
+}
+
 

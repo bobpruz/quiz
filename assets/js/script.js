@@ -2,7 +2,10 @@ var greetingEl = $("#greeting");
 var startEl = $("#start");
 var answerGridEl = $("#answer-list");
 var questionEl = $("#questions");
-var timeleft = 10;
+var timeleft = 50;
+var score = 0;
+var highScoreButton = $("#highScoreButton");
+var initialsInput = $("#initials")
 
 var answerEl1Q1 = $(
   '<button id="answer1" class="btn btn-primary rounded mb-1 d-flex"></button>'
@@ -81,9 +84,8 @@ var answerEl4Q5 = $(
 function countDown() {
   var timer = setInterval(function () {
     if (timeleft === 999) {
-        clearInterval(timer);
-    }
-    else if (timeleft <= 0) {
+      clearInterval(timer);
+    } else if (timeleft <= 0) {
       clearInterval(timer);
       document.getElementById("timer").innerHTML = "Time Ended.";
       endGame();
@@ -148,6 +150,8 @@ var ansCheck1y = function () {
 
   if (timeleft > 0) {
     console.log("Correct");
+    score = score + 20;
+    console.log(score);
     qA2();
   } else {
     console.log("Game Over");
@@ -162,6 +166,7 @@ var ansCheck1n = function () {
 
   if (timeleft > 0) {
     console.log("Wrong");
+    timeleft = timeleft - 10;
     qA2();
   } else {
     console.log("Game Over");
@@ -201,6 +206,8 @@ var ansCheck2y = function () {
 
   if (timeleft > 0) {
     console.log("Correct");
+    score = score + 20;
+    console.log(score);
     qA3();
   } else {
     console.log("Game Over");
@@ -215,6 +222,7 @@ var ansCheck2n = function () {
 
   if (timeleft > 0) {
     console.log("Wrong");
+    timeleft = timeleft - 10;
     qA3();
   } else {
     console.log("Game Over");
@@ -254,6 +262,8 @@ var ansCheck3y = function () {
 
   if (timeleft > 0) {
     console.log("Correct");
+    score = score + 20;
+    console.log(score);
     qA4();
   } else {
     console.log("Game Over");
@@ -268,6 +278,7 @@ var ansCheck3n = function () {
 
   if (timeleft > 0) {
     console.log("Wrong");
+    timeleft = timeleft - 10;
     qA4();
   } else {
     console.log("Game Over");
@@ -307,6 +318,8 @@ var ansCheck4y = function () {
 
   if (timeleft > 0) {
     console.log("Correct");
+    score = score + 20;
+    console.log(score);
     qA5();
   } else {
     console.log("Game Over");
@@ -321,6 +334,7 @@ var ansCheck4n = function () {
 
   if (timeleft > 0) {
     console.log("Wrong");
+    timeleft = timeleft - 10;
     qA5();
   } else {
     console.log("Game Over");
@@ -360,6 +374,8 @@ var ansCheck5y = function () {
 
   if (timeleft > 0) {
     console.log("Correct");
+    score = score + 20;
+    console.log(score);
     endGame();
   } else {
     console.log("Game Over");
@@ -375,6 +391,7 @@ var ansCheck5n = function () {
 
   if (timeleft > 0) {
     console.log("Wrong");
+    timeleft = timeleft - 10;
     endGame();
   } else {
     console.log("Game Over");
@@ -384,8 +401,26 @@ var ansCheck5n = function () {
 
 var endGame = function () {
   questionEl.text("");
-  greetingEl.text("Game Over!");
-  timeleft = 999
+  answerGridEl.append('<form method="POST">')
+  answerGridEl.append('<div class="input-group">')
+  answerGridEl.append('<label for="initials">Enter Initials</label>')
+  answerGridEl.append('<input type="text" name="initials" id="initials"/>')
+  answerGridEl.append('</div>')
+  answerGridEl.append('<button id="highScoreButton" class="btn btn-primary">Submit</button>')
+  timeleft = 999;
+
+  highScoreButton.click(function (event) {
+    event.preventDefault();
+    console.log("click")
+  
+    var highScore = {
+      initials: initialsInput.value.trim(),
+      score: score,
+    };
+  
+    localStorage.append("highScore", JSON.stringify(highScore));
+  });
+
 };
 
 greetingCard();
