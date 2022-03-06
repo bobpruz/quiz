@@ -2,10 +2,9 @@ var greetingEl = $("#greeting");
 var startEl = $("#start");
 var answerGridEl = $("#answer-list");
 var questionEl = $("#questions");
+var scoringEl = $("#scoring");
 var timeleft = 50;
 var score = 0;
-var highScoreButton = $("#highScoreButton");
-var initialsInput = $("#initials")
 
 var answerEl1Q1 = $(
   '<button id="answer1" class="btn btn-primary rounded mb-1 d-flex"></button>'
@@ -399,27 +398,40 @@ var ansCheck5n = function () {
   }
 };
 
+var saveHighScore = function () {
+  let highScore = JSON.parse(localStorage.getItem("highScore") || "[]");
+  var initialsInput = document.getElementById("initials").value;
+  document.getElementById("initials").value = "";
+
+  highScore.push({ initials: initialsInput, score: score });
+
+  localStorage.setItem("highScore", JSON.stringify(highScore));
+  displayHighScores();
+};
+
 var endGame = function () {
   questionEl.text("");
-  answerGridEl.append('<form method="POST">')
-  answerGridEl.append('<div class="input-group">')
-  answerGridEl.append('<label for="initials">Enter Initials</label>')
-  answerGridEl.append('<input type="text" name="initials" id="initials"/>')
-  answerGridEl.append('</div>')
-  answerGridEl.append('<button id="highScoreButton" class="btn btn-primary">Submit</button>')
+  scoringEl.append('<label for="initials">Enter Initials</label>');
+  scoringEl.append('<input type="text" name="initials" id="initials"/>');
+  scoringEl.append(
+    '<button id="highScoreButton" class="btn btn-primary">Submit</button>'
+  );
   timeleft = 999;
 
-  highScoreButton.click(function (event) {
-    event.preventDefault();
-    console.log("click")
-  
-    var highScore = {
-      initials: initialsInput.value.trim(),
-      score: score,
-    };
-  
-    localStorage.append("highScore", JSON.stringify(highScore));
-  });
+  var highScoreButton = $("#highScoreButton");
+  highScoreButton.on("click", saveHighScore);
+};
+
+var displayHighScores = function () {
+  scoringEl.empty();
+  let highScore = JSON.parse(localStorage.getItem("highScore") || "[]");
+  var scoreList = $('#score-list')
+
+  scoringEl.append("<h2>High Scores</h2>");
+
+  for (var i = 0; i < highScore.length; i++) {
+    scoreList.append("<li>" + `${highScore[i].initials}` + ":    " + `${highScore[i].score}` + "</li>")
+  }
 
 };
 

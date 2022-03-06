@@ -53,8 +53,10 @@ header p {
     margin: 3px;
 }
 
-#input-group form {
+#score-list {
     font-size: 2vw;
+    font-weight: bold;
+    list-style: none;
 }
 
 
