@@ -53,6 +53,13 @@ header p {
     margin: 3px;
 }
 
+.scoring-label {
+    font-size: 2vw;
+    font-weight: bold;
+    padding-right: 3%;
+    vertical-align: bottom;
+}
+
 #score-list {
     font-size: 2vw;
     font-weight: bold;

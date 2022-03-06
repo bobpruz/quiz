@@ -1,3 +1,4 @@
+// set variables
 var greetingEl = $("#greeting");
 var startEl = $("#start");
 var answerGridEl = $("#answer-list");
@@ -6,6 +7,7 @@ var scoringEl = $("#scoring");
 var timeleft = 50;
 var score = 0;
 
+// setup answer buttons
 var answerEl1Q1 = $(
   '<button id="answer1" class="btn btn-primary rounded mb-1 d-flex"></button>'
 );
@@ -79,7 +81,7 @@ var answerEl4Q5 = $(
   '<button id="answer4" class="btn btn-primary rounded mb-1 d-flex"></button>'
 );
 
-//timer functions
+// timer functions
 function countDown() {
   var timer = setInterval(function () {
     if (timeleft === 999) {
@@ -99,6 +101,7 @@ function countDown() {
   }, 1000);
 }
 
+// initial screen
 function greetingCard() {
   greetingEl.text(
     "Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds! Press the start button to begin."
@@ -108,6 +111,7 @@ function greetingCard() {
   startEl.on("click", qA1);
 }
 
+// clear start content function
 function answerGrid() {
   greetingEl.text("");
   startEl.remove();
@@ -118,6 +122,7 @@ function answerGrid() {
   answerGridEl.append(answerEl4Q1);
 }
 
+// start timer, clear screen and start first questions
 var qA1 = function () {
   answerGrid();
   countDown();
@@ -172,6 +177,7 @@ var ansCheck1n = function () {
   }
 };
 
+// second question
 var qA2 = function () {
   answerGridEl.append(answerEl1Q2);
   answerGridEl.append(answerEl2Q2);
@@ -228,6 +234,7 @@ var ansCheck2n = function () {
   }
 };
 
+// question 3
 var qA3 = function () {
   answerGridEl.append(answerEl1Q3);
   answerGridEl.append(answerEl2Q3);
@@ -284,6 +291,7 @@ var ansCheck3n = function () {
   }
 };
 
+// question 4
 var qA4 = function () {
   answerGridEl.append(answerEl1Q4);
   answerGridEl.append(answerEl2Q4);
@@ -340,6 +348,7 @@ var ansCheck4n = function () {
   }
 };
 
+// question 5
 var qA5 = function () {
   answerGridEl.append(answerEl1Q5);
   answerGridEl.append(answerEl2Q5);
@@ -398,6 +407,7 @@ var ansCheck5n = function () {
   }
 };
 
+// read local storage and append new score to local storage and array
 var saveHighScore = function () {
   let highScore = JSON.parse(localStorage.getItem("highScore") || "[]");
   var initialsInput = document.getElementById("initials").value;
@@ -409,9 +419,10 @@ var saveHighScore = function () {
   displayHighScores();
 };
 
+// clear screen and get initials for scoring
 var endGame = function () {
   questionEl.text("");
-  scoringEl.append('<label for="initials">Enter Initials</label>');
+  scoringEl.append('<label for="initials" class="scoring-label" >Enter Initials:   </label>');
   scoringEl.append('<input type="text" name="initials" id="initials"/>');
   scoringEl.append(
     '<button id="highScoreButton" class="btn btn-primary">Submit</button>'
@@ -422,6 +433,7 @@ var endGame = function () {
   highScoreButton.on("click", saveHighScore);
 };
 
+// display saved scores
 var displayHighScores = function () {
   scoringEl.empty();
   let highScore = JSON.parse(localStorage.getItem("highScore"));
