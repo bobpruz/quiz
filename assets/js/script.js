@@ -122,11 +122,11 @@ var qA1 = function () {
   answerGrid();
   countDown();
 
-  var currentQuestion = "This is question 1";
-  var currentAnswer1 = " This is answer 1-2";
-  var currentAnswer2 = " This is answer 1-2";
-  var currentAnswer3 = " This is answer 1-3";
-  var currentAnswer4 = " This is answer 1-4";
+  var currentQuestion = "The condition in an if / else statement is enclosed with _____.";
+  var currentAnswer1 = "curly brackets";
+  var currentAnswer2 = "square brackets";
+  var currentAnswer3 = "parenthesis";
+  var currentAnswer4 = "quotes";
 
   questionEl.text(currentQuestion);
 
@@ -135,9 +135,9 @@ var qA1 = function () {
   $("#answer3").append(currentAnswer3);
   $("#answer4").append(currentAnswer4);
 
-  answerEl1Q1.on("click", ansCheck1y);
+  answerEl1Q1.on("click", ansCheck1n);
   answerEl2Q1.on("click", ansCheck1n);
-  answerEl3Q1.on("click", ansCheck1n);
+  answerEl3Q1.on("click", ansCheck1y);
   answerEl4Q1.on("click", ansCheck1n);
 };
 
@@ -178,11 +178,11 @@ var qA2 = function () {
   answerGridEl.append(answerEl3Q2);
   answerGridEl.append(answerEl4Q2);
 
-  var currentQuestion = "This is question 2";
-  var currentAnswer1 = " This is answer 2-1";
-  var currentAnswer2 = " This is answer 2-2";
-  var currentAnswer3 = " This is answer 2-3";
-  var currentAnswer4 = " This is answer 2-4";
+  var currentQuestion = "Commonly used data types DO Not Include:";
+  var currentAnswer1 = "numbers";
+  var currentAnswer2 = "alerts";
+  var currentAnswer3 = "strings";
+  var currentAnswer4 = "booleans";
 
   questionEl.text(currentQuestion);
 
@@ -191,8 +191,8 @@ var qA2 = function () {
   $("#answer3").append(currentAnswer3);
   $("#answer4").append(currentAnswer4);
 
-  answerEl1Q2.on("click", ansCheck2y);
-  answerEl2Q2.on("click", ansCheck2n);
+  answerEl1Q2.on("click", ansCheck2n);
+  answerEl2Q2.on("click", ansCheck2y);
   answerEl3Q2.on("click", ansCheck2n);
   answerEl4Q2.on("click", ansCheck2n);
 };
@@ -234,11 +234,11 @@ var qA3 = function () {
   answerGridEl.append(answerEl3Q3);
   answerGridEl.append(answerEl4Q3);
 
-  var currentQuestion = "This is question 3";
-  var currentAnswer1 = " This is answer 3-1";
-  var currentAnswer2 = " This is answer 3-2";
-  var currentAnswer3 = " This is answer 3-3";
-  var currentAnswer4 = " This is answer 3-4";
+  var currentQuestion = "A very useful tool used during development and debugging for printing content to the debugger is:";
+  var currentAnswer1 = "console.log";
+  var currentAnswer2 = "terminal/bash";
+  var currentAnswer3 = "jquery";
+  var currentAnswer4 = "javascript";
 
   questionEl.text(currentQuestion);
 
@@ -290,11 +290,11 @@ var qA4 = function () {
   answerGridEl.append(answerEl3Q4);
   answerGridEl.append(answerEl4Q4);
 
-  var currentQuestion = "This is question 4";
-  var currentAnswer1 = " This is answer 4-1";
-  var currentAnswer2 = " This is answer 4-2";
-  var currentAnswer3 = " This is answer 4-3";
-  var currentAnswer4 = " This is answer 4-4";
+  var currentQuestion = "String values must be enclosed within _____ when being assigned to variables.";
+  var currentAnswer1 = "commas";
+  var currentAnswer2 = "curly brackets";
+  var currentAnswer3 = "quotes";
+  var currentAnswer4 = "parenthesis";
 
   questionEl.text(currentQuestion);
 
@@ -303,9 +303,9 @@ var qA4 = function () {
   $("#answer3").append(currentAnswer3);
   $("#answer4").append(currentAnswer4);
 
-  answerEl1Q4.on("click", ansCheck4y);
+  answerEl1Q4.on("click", ansCheck4n);
   answerEl2Q4.on("click", ansCheck4n);
-  answerEl3Q4.on("click", ansCheck4n);
+  answerEl3Q4.on("click", ansCheck4y);
   answerEl4Q4.on("click", ansCheck4n);
 };
 
@@ -346,11 +346,11 @@ var qA5 = function () {
   answerGridEl.append(answerEl3Q5);
   answerGridEl.append(answerEl4Q5);
 
-  var currentQuestion = "This is question 5";
-  var currentAnswer1 = " This is answer 5-2";
-  var currentAnswer2 = " This is answer 5-2";
-  var currentAnswer3 = " This is answer 5-3";
-  var currentAnswer4 = " This is answer 5-4";
+  var currentQuestion = "Arrays in JavaScript can be used to store _____.";
+  var currentAnswer1 = "numbers and strings";
+  var currentAnswer2 = "other arrays";
+  var currentAnswer3 = "booleans";
+  var currentAnswer4 = "all of the above";
 
   questionEl.text(currentQuestion);
 
@@ -359,10 +359,10 @@ var qA5 = function () {
   $("#answer3").append(currentAnswer3);
   $("#answer4").append(currentAnswer4);
 
-  answerEl1Q5.on("click", ansCheck5y);
+  answerEl1Q5.on("click", ansCheck5n);
   answerEl2Q5.on("click", ansCheck5n);
   answerEl3Q5.on("click", ansCheck5n);
-  answerEl4Q5.on("click", ansCheck5n);
+  answerEl4Q5.on("click", ansCheck5y);
 };
 
 var ansCheck5y = function () {
@@ -424,7 +424,7 @@ var endGame = function () {
 
 var displayHighScores = function () {
   scoringEl.empty();
-  let highScore = JSON.parse(localStorage.getItem("highScore") || "[]");
+  let highScore = JSON.parse(localStorage.getItem("highScore"));
   var scoreList = $('#score-list')
 
   scoringEl.append("<h2>High Scores</h2>");
